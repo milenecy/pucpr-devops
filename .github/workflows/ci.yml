@@ -25,5 +25,4 @@ jobs:
 
       - name: Run tests
         run: |
-          export PYTHONPATH=$(pwd)  # Garantir que o pytest saiba onde está o código
-          pytest
+          PYTHONPATH=. pytest
