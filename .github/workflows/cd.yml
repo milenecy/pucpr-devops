@@ -1,17 +1,26 @@
-name: Continuous Deployment (CD)
+name: CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checar código
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Configuração do ambiente
-      run: echo "Deployment configuration, but not implemented"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install mkdocs
+
+      - name: Deploy with MkDocs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
