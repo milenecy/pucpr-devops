@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Limpar cache do git
+        run: git gc --prune=now
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -18,6 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: pip install mkdocs
+
+      - name: Build site with MkDocs
+        run: mkdocs build
+
+      - name: Verificar diretório de build
+        run: ls -la ./site
 
       - name: Deploy with MkDocs
         uses: peaceiris/actions-gh-pages@v3
