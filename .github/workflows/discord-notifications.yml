@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - dev
-      - discord-notifications  # Adiciona suas branches aqui
+      - discord-notifications
 
 jobs:
   discord:
@@ -18,5 +18,5 @@ jobs:
       uses: Sniddl/discord-commits@v1.6
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        template: "short"
+        template: "avatar-with-link"
         include-extras: true
