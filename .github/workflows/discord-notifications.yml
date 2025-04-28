@@ -1,21 +1,20 @@
-name: Discord Notification
+name: Discord Webhook Notification
 
 on:
   push:
     branches:
-      - main  # Notificação quando for feito um push para a branch main
-  pull_request:
-    types: [opened, synchronize, reopened]  # Notificação quando um PR for aberto, atualizado ou reaberto
+      - main  # ou qualquer branch que você queira monitorar
 
 jobs:
   discord:
-    runs-on: ubuntu-latest  # Executa no Ubuntu mais recente
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4  # Faz o checkout do repositório para a máquina de CI
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Run Discord Webhook
-        uses: johnnyhuy/actions-discord-git-webhook@main  # Usando a ação do professor
+        uses: johnnyhuy/actions-discord-git-webhook@main
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}  # Usando o webhook secreto
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+
