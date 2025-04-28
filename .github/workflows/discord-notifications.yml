@@ -1,0 +1,20 @@
+name: Discord Webhook Notification
+
+on:
+  push:
+    branches:
+      - main  # ou qualquer branch que você queira monitorar
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Discord Webhook
+        uses: johnnyhuy/actions-discord-git-webhook@main
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+
