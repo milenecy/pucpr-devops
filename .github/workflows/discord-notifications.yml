@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - dev
-      - discord-notifications  # Adiciona suas branches aqui
+      - discord-notifications
 
 jobs:
   discord:
