@@ -2,12 +2,15 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+def soma(a, b):
+    return a + b
+
 @app.route("/soma")
 def somar():
     try:
         a = float(request.args.get("a", 0))
         b = float(request.args.get("b", 0))
-        resultado = a + b
+        resultado = soma(a, b)
         return jsonify({"resultado": resultado})
     except Exception as e:
         return jsonify({"erro": str(e)}), 400
