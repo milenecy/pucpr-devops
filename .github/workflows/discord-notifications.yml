@@ -3,8 +3,8 @@ name: Discord Notification
 on:
   push:
     branches:
-      - main      # Ou qualquer outra branch que você esteja usando
-      - discord-notifications  # Se você estiver usando esse branch
+      - dev
+      - discord-notifications  # Adiciona suas branches aqui
 
 jobs:
   discord:
@@ -12,11 +12,11 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # Verifique se o checkout está funcionando corretamente
+      uses: actions/checkout@v2
 
     - name: Run Discord Webhook
       uses: Sniddl/discord-commits@v1.6
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        template: "avatar-with-link"
+        template: "short"
         include-extras: true
