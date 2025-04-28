@@ -21,9 +21,9 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          pip install pytest
-          pip install -r requirements.txt || true
+          pip install -r requirements.txt
 
       - name: Rodar testes
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/src
           pytest tests/
